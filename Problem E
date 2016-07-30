@@ -1,33 +1,48 @@
 #include <iostream>
-#include <string>
+#include <map>
 #include <algorithm>
+#include <vector>
 using namespace std;
-long long int fac(int n)
+typedef struct
 {
-if(n==0)
-return 1;
-return n*fac(n-1);
-}
-long long int comb(int n,int k)
+    int P;
+    int A;
+    int I;
+} TEAM;
+typedef struct
 {
-    return fac(n)/(fac(k)*fac(n-k));
+    int P;
+    int A;
+    int I;
+    string N;
+} team;
+int comp(team A,team B)
+{
+    if(A.P!=B.P)
+    return A.P>B.P;
+    if(A.A!=B.A)
+    return A.A>B.A;
+    if(A.I!=B.I)
+    return A.I>B.I;
 }
 int main() {
-	int T;
-	cin >> T;
-	while(T--)
+    int Ti;
+    cin >> Ti;
+    while(Ti--)
+    {
+	vector<team> V(6);
+	for(int i=0;i<6;i++)
 	{
-	    string S;
-	    cin >> S;
-	    string s1=S.substr(0,S.find('-'));
-    	S.erase(0,S.find('-')+1);
-    	string s2=S.substr(0,S.find('-'));
-    	S.erase(0,S.find('-')+1);
-    	int a=stoi(s1),b=stoi(s2),c=stoi(S);
-	    int A,B,C,D;
-	    cin >> A >>B>>C>>D;
-	    long long int Ss=A*comb(B,a)*comb(C,b)*comb(D,c);
-	    cout <<Ss<<endl;
+	    cin >> V[i].N;
+	    cin >>V[i].P;
+	    cin >>V[i].A;
+	    cin >>V[i].I;
+	    
 	}
+	sort(V.begin(),V.end(),comp);
+	for(int i=0;i<3;i++)
+	cout << V[i].N << " ";
+	cout<< V[3].N<<endl;
+    }
 	return 0;
 }
