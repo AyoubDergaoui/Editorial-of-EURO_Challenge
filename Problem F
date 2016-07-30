@@ -1,0 +1,22 @@
+#include <iostream>
+#include <algorithm>
+#include <map>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+	int T;
+	cin >> T;
+	while(T--)
+	{
+	    int P,A,L[23],s=0;
+	    cin >> P>> A;
+	    for(int i=0;i<23;i++)
+	        cin >> L[i];
+        for(int& i : L)
+            s+=((i*100)>=P*A);
+        cout << s<<endl;
+	}
+	return 0;
+}
