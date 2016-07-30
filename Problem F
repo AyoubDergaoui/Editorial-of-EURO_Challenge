@@ -15,7 +15,7 @@ int main() {
 	    for(int i=0;i<23;i++)
 	        cin >> L[i];
         for(int& i : L)
-            s+=((i*100)>=P*A);
+            s+=((i*100)>=P*A);//counting how many of L[i]*100)>=P*A there are
         cout << s<<endl;
 	}
 	return 0;
