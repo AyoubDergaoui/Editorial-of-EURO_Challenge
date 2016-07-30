@@ -6,8 +6,6 @@
 #include <cstring>
 #include<cstdio>
 using namespace std;
-typedef vector<int> vi;
-typedef vector<vi> vii;
 int Count( const string & str, 
            const string & obj ) {
     int n = 0;
@@ -19,7 +17,7 @@ int Count( const string & str,
     }
     return n;
 }
-void tran(string &S)
+void tran(string &S) // converting the whole S to lowercase
 {
     for(int i=0;i<S.size();i++)
         if(S[i]>='A'&&S[i]<='Z')
@@ -34,14 +32,14 @@ int main() {
     	string S,M;
     	cin >> S>>p;
     	tran(S);
-    	S+=' ';
+    	S+=' ';//adding a whitespace to avoice "PORTUGAL" and "PORTUGALE"
     	getchar();
     	for(int i=0;i<p;i++)
     	{
     	getline(cin,M);
     	tran(M);
-    	M+=' ';
-    	o+=Count(S,M);
+    	M+=' ';//to avoid "PORTUGAL\n" and "PORTUGAL \n"
+    	o+=Count(S,M);"count number of occurences of S in M
     
     	}
     	cout << o << endl;
