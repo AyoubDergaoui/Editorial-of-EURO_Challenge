@@ -5,7 +5,7 @@
 using namespace std;
 
 int main() {
-	map<string,int> MAP1,MAP2,MAP3;
+	map<string,int> MAP1,MAP2,MAP3;//MAP1 for points,MAP2 for goals scored, MAP3 for Average goals
 	string A,B,S[4];
 	int T;
 	cin >> T;
@@ -44,7 +44,7 @@ int main() {
 	        
 	    }
 	    for(int i=0;i<4;i++)
-	        cout << S[i] << " " << MAP1[S[i]] << " " << MAP3[S[i]]<< " " << MAP2[S[i]]<<endl;
+	        cout << S[i] << " " << MAP1[S[i]] << " " << MAP3[S[i]]<< " " << MAP2[S[i]]<<endl;//printing with order of S[i]
 	        cout<<"####"<<endl;
 	}
 	return 0;
