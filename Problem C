@@ -1,0 +1,51 @@
+#include <iostream>
+#include <map>
+#include <string>
+#include <iterator>
+using namespace std;
+
+int main() {
+	map<string,int> MAP1,MAP2,MAP3;
+	string A,B,S[4];
+	int T;
+	cin >> T;
+	while(T--)
+	{
+	cin >> S[0]>>S[1]>>S[2]>>S[3];
+	for(int i=0;i<4;i++)
+	{
+	    MAP1[S[i]]=0;
+	    MAP2[S[i]]=0;
+	    MAP3[S[i]]=0;
+	}
+	int a,b;
+	for(int i=0;i<6;i++)
+	    {
+	        cin >> A >> B >> a >> b;
+	        MAP2[A]+=a;
+	        MAP3[A]+=a-b;
+	        MAP2[B]+=b;
+	        MAP3[B]+=b-a;
+	        if(a>b)
+	        {
+	            MAP1[A]+=3;
+	            MAP1[B]+=0;
+	        }
+	        else if( a<b)
+	        {
+	            MAP1[A]+=0;
+	            MAP1[B]+=3;
+	        }
+	        else
+	        {
+	            MAP1[A]+=1;
+	            MAP1[B]+=1;
+	        }
+	        
+	    }
+	    for(int i=0;i<4;i++)
+	        cout << S[i] << " " << MAP1[S[i]] << " " << MAP3[S[i]]<< " " << MAP2[S[i]]<<endl;
+	        cout<<"####"<<endl;
+	}
+	return 0;
+}
