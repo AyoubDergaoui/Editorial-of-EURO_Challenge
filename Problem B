@@ -1,0 +1,50 @@
+#include <iostream>
+#include <algorithm>
+#include <map>
+#include <string>
+#include <vector>
+#include <cstring>
+#include<cstdio>
+using namespace std;
+typedef vector<int> vi;
+typedef vector<vi> vii;
+int Count( const string & str, 
+           const string & obj ) {
+    int n = 0;
+    std::string ::size_type pos = 0;
+    while( (pos = obj.find( str, pos )) 
+                 != std::string::npos ) {
+    	n++;
+    	pos += str.size();
+    }
+    return n;
+}
+void tran(string &S)
+{
+    for(int i=0;i<S.size();i++)
+        if(S[i]>='A'&&S[i]<='Z')
+            S[i]=S[i]+'a'-'A';
+}
+int main() {
+	int T;
+	cin >> T;
+	while(T--)
+	{
+	    int p,o=0;
+    	string S,M;
+    	cin >> S>>p;
+    	tran(S);
+    	S+=' ';
+    	getchar();
+    	for(int i=0;i<p;i++)
+    	{
+    	getline(cin,M);
+    	tran(M);
+    	M+=' ';
+    	o+=Count(S,M);
+    
+    	}
+    	cout << o << endl;
+	}
+	return 0;
+}
