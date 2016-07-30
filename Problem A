@@ -18,12 +18,12 @@ int main() {
 	while(T--)
 	{
 	    string S;
-	    cin >> S;
-	    string s1=S.substr(0,S.find('-'));
-    	S.erase(0,S.find('-')+1);
-    	string s2=S.substr(0,S.find('-'));
-    	S.erase(0,S.find('-')+1);
-    	int a=stoi(s1),b=stoi(s2),c=stoi(S);
+	    cin >> S;/S=xx-yy-zz
+	    string s1=S.substr(0,S.find('-'));//extract xxx from xx-yy-zz
+ 	    S.erase(0,S.find('-')+1);//delete the xx
+    	    string s2=S.substr(0,S.find('-'));//extract the yy from yy-zz
+    	    S.erase(0,S.find('-')+1);//delete the yy from yy-zz
+    	    int a=stoi(s1),b=stoi(s2),c=stoi(S);//convert string to int
 	    int A,B,C,D;
 	    cin >> A >>B>>C>>D;
 	    long long int Ss=A*comb(B,a)*comb(C,b)*comb(D,c);
