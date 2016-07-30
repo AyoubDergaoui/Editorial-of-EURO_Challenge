@@ -5,24 +5,18 @@
 using namespace std;
 typedef struct
 {
-    int P;
-    int A;
-    int I;
-} TEAM;
-typedef struct
-{
-    int P;
-    int A;
-    int I;
+    int P; // Points
+    int A; //Average goals
+    int I; //Goals scored
     string N;
 } team;
 int comp(team A,team B)
 {
-    if(A.P!=B.P)
+    if(A.P!=B.P) // if they're equal in points
     return A.P>B.P;
-    if(A.A!=B.A)
+    if(A.A!=B.A) // then we gonna test the Average goals
     return A.A>B.A;
-    if(A.I!=B.I)
+    if(A.I!=B.I) //finally we gonna test the scored goals
     return A.I>B.I;
 }
 int main() {
@@ -39,7 +33,7 @@ int main() {
 	    cin >>V[i].I;
 	    
 	}
-	sort(V.begin(),V.end(),comp);
+	sort(V.begin(),V.end(),comp);// a simpl sorting
 	for(int i=0;i<3;i++)
 	cout << V[i].N << " ";
 	cout<< V[3].N<<endl;
