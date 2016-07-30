@@ -1,0 +1,72 @@
+#include <iostream>
+#include <map>
+#include <algorithm>
+#include <vector>
+using namespace std;
+typedef struct
+{
+    int P;
+    int A;
+    int I;
+} TEAM;
+typedef struct
+{
+    int P;
+    int A;
+    int I;
+    string N;
+} team;
+int comp(team A,team B)
+{
+    if(A.P!=B.P)
+    return A.P>B.P;
+    if(A.A!=B.A)
+    return A.A>B.A;
+    if(A.I!=B.I)
+    return A.I>B.I;
+}
+int main() {
+    int Ti;
+    cin >> Ti;
+    while(Ti--)
+    {
+    string S[4];
+	map<string,TEAM> T;
+	map<string,TEAM>::iterator it=T.begin();
+	for(int i=0;i<4;i++)
+	    {
+	        cin >> S[i];
+	        T[S[i]].P=0;T[S[i]].I=0;T[S[i]].A=0;
+	    }
+	for(int i=0;i<6;i++)
+	{
+	    string S1,S2;
+	    int a,b;
+	    cin >> S1>>S2>>a>>b;
+	    if(a>b)
+	        T[S1].P+=3;
+        else if(a<b)
+            T[S2].P+=3;
+        else
+            {
+                T[S2].P+=1;T[S1].P+=1;
+            }
+        T[S1].I+=a;T[S2].I+=b;
+        T[S1].A+=(a-b);T[S2].A+=(b-a);
+	}
+	vector<team> V(4);
+	for(int i=0;i<4;i++)
+	{
+	    V[i].N=S[i];
+	    V[i].P=T[S[i]].P;
+	    V[i].A=T[S[i]].A;
+	    V[i].I=T[S[i]].I;
+	    
+	}
+	sort(V.begin(),V.end(),comp);
+	for(int i=0;i<4;i++)
+	cout << V[i].N << " " << V[i].P << " " <<V[i].A <<" " << V[i].I<<endl;
+	cout << "####" <<endl;
+    }
+	return 0;
+}
