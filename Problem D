@@ -5,24 +5,24 @@
 using namespace std;
 typedef struct
 {
-    int P;
-    int A;
-    int I;
+    int P; //Points
+    int A; //Average goals
+    int I; // Scored goals
 } TEAM;
 typedef struct
 {
-    int P;
-    int A;
-    int I;
-    string N;
+    int P; //Points
+    int A; //Average goals
+    int I; //Scored goals
+    string N; //Name of the team
 } team;
 int comp(team A,team B)
 {
-    if(A.P!=B.P)
-    return A.P>B.P;
-    if(A.A!=B.A)
+    if(A.P!=B.P) //testing first of all the points
+    return A.P>B.P; 
+    if(A.A!=B.A) //after, testing the average goals
     return A.A>B.A;
-    if(A.I!=B.I)
+    if(A.I!=B.I) //finally testing the scored goals
     return A.I>B.I;
 }
 int main() {
@@ -32,7 +32,6 @@ int main() {
     {
     string S[4];
 	map<string,TEAM> T;
-	map<string,TEAM>::iterator it=T.begin();
 	for(int i=0;i<4;i++)
 	    {
 	        cin >> S[i];
@@ -44,17 +43,18 @@ int main() {
 	    int a,b;
 	    cin >> S1>>S2>>a>>b;
 	    if(a>b)
-	        T[S1].P+=3;
+	        T[S1].P+=3; //winner gets 3 points
         else if(a<b)
             T[S2].P+=3;
         else
             {
                 T[S2].P+=1;T[S1].P+=1;
             }
-        T[S1].I+=a;T[S2].I+=b;
+        T[S1].I+=a;T[S2].I+=b; //apdating the goals
         T[S1].A+=(a-b);T[S2].A+=(b-a);
 	}
 	vector<team> V(4);
+	//converting map to vector for sorting them
 	for(int i=0;i<4;i++)
 	{
 	    V[i].N=S[i];
@@ -63,7 +63,7 @@ int main() {
 	    V[i].I=T[S[i]].I;
 	    
 	}
-	sort(V.begin(),V.end(),comp);
+	sort(V.begin(),V.end(),comp);//sroting them
 	for(int i=0;i<4;i++)
 	cout << V[i].N << " " << V[i].P << " " <<V[i].A <<" " << V[i].I<<endl;
 	cout << "####" <<endl;
